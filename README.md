@@ -41,6 +41,18 @@ Predicts resale price of heavy equipment (bulldozers/construction machinery), ev
 
 ---
 
+### 4. [Mushroom Classification](./mushroom_classification.ipynb)
+Predicts whether a mushroom is edible or poisonous from its physical and categorical attributes, evaluated on **accuracy**.
+
+- EDA covering dtypes, descriptive statistics, missing values (with an explicit `"missing"` category where missingness itself correlates with class), duplicates, and outlier bounds via IQR.
+- Feature handling guided by train/test overlap checks — `habitat` dropped entirely after finding zero category overlap between splits, since it carries no transferable signal.
+- **8 baseline models** compared (Logistic Regression, KNN, Decision Tree, Random Forest, Gradient Boosting, XGBoost, LightGBM, CatBoost) via 5-fold stratified CV, with **3 tuned** (Random Forest, XGBoost, LightGBM) via `GridSearchCV`.
+- **Final model:** tuned LightGBM pipeline, used to generate the competition submission.
+
+**Stack:** pandas, scikit-learn, XGBoost, LightGBM, CatBoost
+
+---
+
 ## Common approach across projects
 
 - **Leak-safe preprocessing:** all imputation, scaling, and target-encoding statistics are fit on training data only and applied to validation/test.
@@ -59,6 +71,7 @@ Python · pandas · NumPy · scikit-learn · XGBoost · LightGBM · CatBoost · 
 ├── customer_churn_prediction.ipynb
 ├── flight_price_pridiction.ipynb
 ├── heavy_equipment_price_prediction.ipynb
+├── mushroom_classification.ipynb
 └── README.md
 ```
 
